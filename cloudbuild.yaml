@@ -28,5 +28,8 @@ steps:
 #   _REGION: 'us-central1'
 
 # Optionally, define the Cloud Build trigger settings
+options:
+  logging: CLOUD_LOGGING_ONLY
+  
 images:
   - 'us-central1-docker.pkg.dev/gcp-training-710/gcf-artifacts/simple-pimple'
