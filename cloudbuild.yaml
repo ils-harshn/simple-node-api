@@ -1,11 +1,11 @@
 steps:
   # Step 1: Build the Docker image
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/$PROJECT_ID/app-image', '.']
+    args: ['build', '-t', 'us-central1-docker.pkg.dev/gcp-training-710/gcf-artifacts/simple-pimple', '.']
 
   # Step 2: Push the Docker image to Google Container Registry
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/$PROJECT_ID/app-image']
+    args: ['push', 'us-central1-docker.pkg.dev/gcp-training-710/gcf-artifacts/simple-pimple']
 
   # Step 3: Deploy the image to Cloud Run
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
@@ -15,7 +15,7 @@ steps:
       - 'deploy'
       - 'my-app'  # Replace with your Cloud Run service name
       - '--image'
-      - 'gcr.io/$PROJECT_ID/app-image'
+      - 'us-central1-docker.pkg.dev/gcp-training-710/gcf-artifacts/simple-pimple'
       - '--platform'
       - 'managed'
       - '--region'
@@ -23,10 +23,10 @@ steps:
       - '--allow-unauthenticated'
 
 # Substitutions for variables, if needed
-substitutions:
-  _SERVICE_NAME: 'my-app'
-  _REGION: 'us-central1'
+# substitutions:
+#   _SERVICE_NAME: 'my-app'
+#   _REGION: 'us-central1'
 
 # Optionally, define the Cloud Build trigger settings
 images:
-  - 'gcr.io/$PROJECT_ID/app-image'
+  - 'us-central1-docker.pkg.dev/gcp-training-710/gcf-artifacts/simple-pimple'
