@@ -20,6 +20,8 @@ steps:
       - 'managed'
       - '--region'
       - 'us-central1'  # Replace with your desired region
+      - '--port'
+      - '3000' # Replace with your desired region
       - '--allow-unauthenticated'
 
 # Substitutions for variables, if needed
