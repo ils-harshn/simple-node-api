@@ -2,13 +2,13 @@
 FROM node:18-slim
 
 # Set working directory inside the container
-WORKDIR /usr/src/app
+WORKDIR /app
 
 # Copy the package.json and package-lock.json
-COPY package*.json ./
+COPY . .
 
 # Install dependencies
-RUN npm install --only=production
+RUN npm install 
 
 # Copy the rest of the application code
 COPY . .
