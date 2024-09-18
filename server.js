@@ -14,6 +14,9 @@ app.use(
 app.use(express.json());
 
 app.get("/status", (req, res) => {
+  console.log("STATUS LOG FOR CONGIF");
+  console.log(CONFIG)
+  console.log(CONFIG.APP_NAME);
   res.json({
     status: "working",
     app_name: CONFIG.APP_NAME,
