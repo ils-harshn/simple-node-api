@@ -12,8 +12,10 @@ const load_config = async () => {
     });
 
     const payload = version.payload.data.toString("utf8");
+    console.log("TAKING GCP SECRET RESOURCE", version.payload.data);
     CONFIG = JSON.parse(payload);
   } catch {
+    console.log("TAKING LOCAL RESOURCE")
     CONFIG = process.env;
   }
 };
