@@ -5,10 +5,13 @@ const client = new SecretManagerServiceClient();
 
 let CONFIG = process.env;
 
-const load_config = async () => {
+exports.load_config = async () => {
   try {
-    console.log("process.env.SECRET_VERSION_NAME:", process.env.SECRET_VERSION_NAME);
-    
+    console.log(
+      "process.env.SECRET_VERSION_NAME:",
+      process.env.SECRET_VERSION_NAME
+    );
+
     const [version] = await client.accessSecretVersion({
       name: process.env.SECRET_VERSION_NAME,
     });
@@ -17,11 +20,15 @@ const load_config = async () => {
     const payload = version.payload.data.toString("utf8");
     CONFIG = JSON.parse(payload);
     console.log("CONFIG", CONFIG);
-  } catch(error) {
+  } catch (error) {
     console.error("Error accessing secret version:", error);
-    console.log("TAKING LOCAL RESOURCE")
+    console.log("TAKING LOCAL RESOURCE");
     CONFIG = process.env;
   }
+
+  module.exports = {
+    APP_NAME: CONFIG.APP_NAME,
+  };
 };
 
-module.exports = { CONFIG, load_config };
+// module.exports = { CONFIG, load_config };

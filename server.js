@@ -1,7 +1,7 @@
 const http = require("http");
 const express = require("express");
 const cors = require("cors");
-const { CONFIG, load_config } = require("./config");
+const { load_config, APP_NAME } = require("./config");
 const app = express();
 const server = http.createServer(app);
 
@@ -14,12 +14,11 @@ app.use(
 app.use(express.json());
 
 app.get("/status", (req, res) => {
-  console.log("STATUS LOG FOR CONGIF");
-  console.log(CONFIG)
-  console.log(CONFIG.APP_NAME);
+  console.log("STATUS LOG FOR CONGIF", APP_NAME);
+
   res.json({
     status: "working",
-    app_name: CONFIG.APP_NAME,
+    app_name: APP_NAME,
   });
 });
 
