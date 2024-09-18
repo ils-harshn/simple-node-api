@@ -15,6 +15,7 @@ app.use(express.json());
 app.get("/status", (req, res) => {
   res.json({
     status: "working",
+    app_name: process.env.APP_NAME,
   });
 });
 
