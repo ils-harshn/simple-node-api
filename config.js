@@ -16,7 +16,8 @@ const load_config = async () => {
     console.log("TAKING GCP SECRET RESOURCE", version.payload.data);
     const payload = version.payload.data.toString("utf8");
     CONFIG = JSON.parse(payload);
-  } catch {
+  } catch(error) {
+    console.error("Error accessing secret version:", error);
     console.log("TAKING LOCAL RESOURCE")
     CONFIG = process.env;
   }
