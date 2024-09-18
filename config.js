@@ -25,10 +25,8 @@ exports.load_config = async () => {
     console.log("TAKING LOCAL RESOURCE");
     CONFIG = process.env;
   }
-
-  module.exports = {
-    APP_NAME: CONFIG.APP_NAME,
-  };
 };
+
+exports.get_config = () => CONFIG;
 
 // module.exports = { CONFIG, load_config };
