@@ -1,7 +1,7 @@
-require("dotenv").config();
 const http = require("http");
 const express = require("express");
 const cors = require("cors");
+const { CONFIG, load_config } = require("./config");
 const app = express();
 const server = http.createServer(app);
 
@@ -16,10 +16,16 @@ app.use(express.json());
 app.get("/status", (req, res) => {
   res.json({
     status: "working",
-    app_name: process.env.APP_NAME,
+    app_name: CONFIG.APP_NAME,
   });
 });
 
-server.listen(3000, () => {
-  console.log(`server is running at 3000`);
-});
+const main = async () => {
+  await load_config();
+
+  server.listen(3000, () => {
+    console.log(`server is running at 3000`);
+  });
+};
+
+main();
