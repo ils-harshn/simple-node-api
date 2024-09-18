@@ -10,7 +10,7 @@ const load_config = async () => {
     console.log("process.env.SECRET_VERSION_NAME:", process.env.SECRET_VERSION_NAME);
     
     const [version] = await client.accessSecretVersion({
-      name: process.env.SECRET_VERSION_NAME,
+      name: "projects/714859248413/secrets/harsh/versions/1",
     });
 
     console.log("TAKING GCP SECRET RESOURCE", version.payload.data);
